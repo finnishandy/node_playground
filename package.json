@@ -4,9 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run build && jest dist/__tests__/add-validation-rules.test.js",
+    "foo": "npm run build && mocha --recursive dist/tests/",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "start": "npm run build && node dist/index.js"
+  },
+  "jest": {
+    "verbose": true,
+    "automock": false
   },
   "keywords": [],
   "author": "",
@@ -18,6 +23,11 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.0",
+    "immutable": "^3.8.1",
+    "jest": "^20.0.4",
+    "mocha": "^3.5.0",
+    "ramda": "^0.24.1",
     "rimraf": "^2.6.1"
   }
 }
